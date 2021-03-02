@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class FragmentA extends Fragment {
+    View view;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -23,10 +24,15 @@ public class FragmentA extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        this.view = view;
         //setup here
         TextView textView = view.findViewById(R.id.a_textview);
         textView.setText("Hello Mom");
         Button button = view.findViewById(R.id.a_button);
         button.setText("click me");
+    }
+
+    public void update(String string) {
+        ((TextView)view.findViewById(R.id.a_textview)).setText(string);
     }
 }
